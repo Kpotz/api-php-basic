@@ -7,14 +7,14 @@ class Product extends Model {
     private $name;
     private $description;
     private $image;
-    private $fk_category;
+    private $category;
 	
 	public function __serialize(): array {	
 		$serialize = [
 			'name' => $this->name,
         	'description' => $this->description,
         	'image' => $this->image,
-        	'fk_category' => $this->fk_category,
+        	'category' => $this->category,
 		];
 		if ($this->id) $serialize['id'] = $this->id;
 		return $serialize;
@@ -26,24 +26,9 @@ class Product extends Model {
 		$product->name = $obj->name;
 		$product->description = $obj->description;
 		$product->image = $obj->image;
-		$product->fk_category = $obj->fk_category;
+		$product->category = $obj->category;
 		return $product->model_save();
 	}
-
-	/*public function update($obj): array {
-		$user = new User();
-		$user->id = $obj->id;
-		$user->name = $obj->name;
-		$user->pass = md5($obj->pass);
-		$user->permission = $obj->permission;
-		return $user->model_update();
-	}
-
-	public function delete($obj): array {
-		$user = new User();
-		$user->id = $obj->id;
-		return $user->model_delete();
-	}*/
 
 	public function find($id = null): array {
 		$product = new Product();
