@@ -89,7 +89,7 @@ Class Model Extends Connection{
 
     private function bindValues() {
         foreach($this->data as $key => $value) {
-            if ($value) $this->statement->bindValue($this->bindPrefix . $key, $value);
+            if ($value != "") $this->statement->bindValue($this->bindPrefix . $key, $value);
         }
     }
 
